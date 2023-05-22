@@ -25,8 +25,8 @@ def add_species(gen_table,spe_file):
         if args.d == "silva":
             print("ASV\tDomain\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecie\tBoot_Domain\tBoot_Phylum\tBoot_Class\tBoot_Order\tBoot_Family\tBoot_Genus", file=fout)
 
-        if args.d == "pr2":
-            print("ASV\tDomain\tSupergroup\tDivision\tSubdivision\tClass\tOrder\tFamily\tGenus\tSpecies\tBoot_Domain\tBoot_Supergroup\tBoot_Division\tBoot_Subdivision\tBoot_Class\tBoot_Order\tBoot_Family\tBoot_Genus\tBoot_Species", file=fout)    
+#        if args.d == "pr2":
+#            print("ASV\tDomain\tSupergroup\tDivision\tSubdivision\tClass\tOrder\tFamily\tGenus\tSpecies\tBoot_Domain\tBoot_Supergroup\tBoot_Division\tBoot_Subdivision\tBoot_Class\tBoot_Order\tBoot_Family\tBoot_Genus\tBoot_Species", file=fout)    
 
         species={}
         with open(spe_file, "r") as fin:

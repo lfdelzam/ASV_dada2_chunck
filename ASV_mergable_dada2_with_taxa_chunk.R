@@ -4,7 +4,7 @@ suppressPackageStartupMessages(library(argparser))
 
 # arguments
 p <- arg_parser("ASV_mergable_dada2_with_taxa_chunk.R - use it after removing adapters and primers using cutadapt")
-p <- add_argument(p, "-d", help="directory containing the fastq files. This folder should contain trimmed reads. It may contain none or several folders (from each illumina lane used that will be merged into one final table)", default="Cutadapt_results")
+p <- add_argument(p, "-d", help="directory containing the fastq files, *.gz. This folder should contain trimmed reads. It may contain none or several folders (from each illumina lane used that will be merged into one final table)", default="Cutadapt_results")
 p <- add_argument(p, "-f", help="forward reads extention", default="_L001_R1_001.fastq.fq.gz")
 p <- add_argument(p, "-r", help="reverse reads extention", default="_L001_R2_001.fastq.fq.gz")
 p <- add_argument(p, "-l", help="trunlenleft, according to FastQC quality figures - 3' end of trimmed R1 reads", default=265) 

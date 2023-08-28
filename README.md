@@ -1,6 +1,7 @@
 # ASV_dada2_chunck
-Rscript for Dada2 taxonomy affiliation. It reduces the memory requirements and it is faster.
-Primers and adapters must be removed before using this script (please use the snakemake pipeline: https://github.com/biodiversitydata-se/amplicon-multi-cutadapt)
+Rscript for Dada2 taxonomy affiliation. It reduces the memory requirements and is faster.
+Primers and adapters must be removed before using this script, by 
+using the following snakemake pipeline: https://github.com/biodiversitydata-se/amplicon-multi-cutadapt
 
 # Installation 
 

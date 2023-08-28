@@ -9,3 +9,11 @@ Primers and adapters must be removed before using this script (please use the sn
    conda activate dada2_env
    
    conda install -c conda-forge r-argparser=0.7.1
+
+# Usage
+
+     Rscript ASV_mergable_dada2_with_taxa_chunk.R [options]
+   use -h flag to know all the options 
+
+     python one_table.py [oprions]
+   use -h flag to know all the options 

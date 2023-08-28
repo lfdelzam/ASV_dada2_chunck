@@ -13,6 +13,8 @@ using the following snakemake pipeline: https://github.com/biodiversitydata-se/a
 
 # Usage
 
+     conda activate dada2_env
+
      Rscript ASV_mergable_dada2_with_taxa_chunk.R [options]
    use -h flag to know all the options 
 

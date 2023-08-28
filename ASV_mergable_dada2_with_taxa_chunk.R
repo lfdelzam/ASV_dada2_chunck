@@ -14,6 +14,7 @@ p <- add_argument(p, "-c", help="assingTaxonomy - tryRC", default=TRUE)
 p <- add_argument(p, "-m", help="allowMultiple", default=TRUE)
 p <- add_argument(p, "-g", help="path to taxonomy database(s)", default="DBs_reference_amplicon/gtdb_16s_db") #DBs_reference_amplicon/SILVA138_db,
 p <- add_argument(p, "-b", help="reference database(s)", default="gtdb") #silva,pr2
+p <- add_argument(p, "-u", help="Cunck size when assingTaxonomy", default=4000)
 p <- add_argument(p, "-O", help="Outdir", default="Dada2_Results")
 
 argv <- parse_args(p)
@@ -181,7 +182,7 @@ if (!file.exists(paste(argv$O,"tax_R",sep="/"))) {
       cat("assignTaxonomy in chunks\n")
       Seqs=colnames(mergetab)
       eND=length(Seqs)
-      sTEP=4000
+      sTEP=argv$u
 
       if (species_add_step) {
         COLNAMES=c(taxLEVELS, "Species", paste("Boot",taxLEVELS, sep="_"))
@@ -201,7 +202,7 @@ if (!file.exists(paste(argv$O,"tax_R",sep="/"))) {
           taxasub=assignTaxonomy(Seqs[i:chunk], file1, multithread=TRUE, taxLevels = taxLEVELS, tryRC = argv$c, outputBootstraps=TRUE)
           if (species_add_step) {
             cat("   addSpecies\n")
-            taxasub$tax <- addSpecies(taxasub$tax, file2, allowMultiple = argv$m, tryRC = argv$c, n=4000)
+            taxasub$tax <- addSpecies(taxasub$tax, file2, allowMultiple = argv$m, tryRC = argv$c, n=argv$u)
             #allowMultiple (Optional). Default FALSE. Defines the behavior when exact matches to multiple (different) species are found. By default, only unambiguous identifications are returned. If set to TRUE, a concatenated string of all exactly matched species is returned.
           }
 

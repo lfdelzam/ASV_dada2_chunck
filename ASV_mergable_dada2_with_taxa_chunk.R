@@ -4,17 +4,17 @@ suppressPackageStartupMessages(library(argparser))
 
 # arguments
 p <- arg_parser("ASV_mergable_dada2_with_taxa_chunk.R - use it after removing adapters and primers using cutadapt")
-p <- add_argument(p, "-d", help="directory containing the fastq files", default="Cutadapt_results")
+p <- add_argument(p, "-d", help="directory containing the fastq files. This folder should contain trimmed reads. It may contain none or several folders (from each illumina lane used that will be merged into one final table)", default="Cutadapt_results")
 p <- add_argument(p, "-f", help="forward reads extention", default="_L001_R1_001.fastq.fq.gz")
 p <- add_argument(p, "-r", help="reverse reads extention", default="_L001_R2_001.fastq.fq.gz")
-p <- add_argument(p, "-l", help="trunlenleft", default=265) 
-p <- add_argument(p, "-t", help="trunlenright", default=240) 
-p <- add_argument(p, "-s", help="mergeSequenceTables -repeats ", default="sum")
-p <- add_argument(p, "-c", help="assingTaxonomy - tryRC", default=TRUE)
-p <- add_argument(p, "-m", help="allowMultiple", default=TRUE)
+p <- add_argument(p, "-l", help="trunlenleft, according to FastQC quality figures - 3' end of trimmed R1 reads", default=265) 
+p <- add_argument(p, "-t", help="trunlenright, according to FastQC quality figures - 3' end of trimmed R2 reads", default=240) 
+p <- add_argument(p, "-s", help="mergeSequenceTables -repeats, when merging Illumina runs", default="sum")
+p <- add_argument(p, "-c", help="assingTaxonomy - dada2 parameter: tryRC", default=TRUE)
+p <- add_argument(p, "-m", help="allowMultiple - dada2 parameter", default=TRUE)
 p <- add_argument(p, "-g", help="path to taxonomy database(s)", default="DBs_reference_amplicon/gtdb_16s_db") #DBs_reference_amplicon/SILVA138_db,
-p <- add_argument(p, "-b", help="reference database(s)", default="gtdb") #silva,pr2
-p <- add_argument(p, "-u", help="Cunck size when assingTaxonomy", default=4000)
+p <- add_argument(p, "-b", help="reference database(s), options: gtdb, silva, pr2", default="gtdb")
+p <- add_argument(p, "-u", help="Chunck size when assingTaxonomy", default=4000)
 p <- add_argument(p, "-O", help="Outdir", default="Dada2_Results")
 
 argv <- parse_args(p)

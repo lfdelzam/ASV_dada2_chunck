@@ -15,7 +15,6 @@ parser.add_argument('-d', dest='d', help='database - silva,gtdb,pr2', required=T
 parser.add_argument('-m', dest='m', help='metadata file',required=True)
 args = parser.parse_args()
 
-### new
 def add_species(gen_table,spe_file):
     fname=str(gen_table).split(".")[0]
     with open(fname+"_species_level.tsv", "w") as fout:
@@ -24,9 +23,6 @@ def add_species(gen_table,spe_file):
 
         if args.d == "silva":
             print("ASV\tDomain\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecie\tBoot_Domain\tBoot_Phylum\tBoot_Class\tBoot_Order\tBoot_Family\tBoot_Genus", file=fout)
-
-#        if args.d == "pr2":
-#            print("ASV\tDomain\tSupergroup\tDivision\tSubdivision\tClass\tOrder\tFamily\tGenus\tSpecies\tBoot_Domain\tBoot_Supergroup\tBoot_Division\tBoot_Subdivision\tBoot_Class\tBoot_Order\tBoot_Family\tBoot_Genus\tBoot_Species", file=fout)    
 
         species={}
         with open(spe_file, "r") as fin:
@@ -38,8 +34,7 @@ def add_species(gen_table,spe_file):
                 if len(g) == 1:
                     s=set( [ i.split()[1] for i in line[1].split(",") ] )
                     species[asv]={ list(g)[0]: "/".join(s) }
-        #        else:
-        #            print(line)
+
 
         with open(gen_table, "r") as fing:
             first_line=True
@@ -75,7 +70,6 @@ def add_species(gen_table,spe_file):
                         else:
                             print("{}\t{}\t{}".format("\t".join(line[:7]), "NA", "\t".join(line[8:]) ), file=fout)                            
 
-######
 
 def sample_name(filem):
     first_line=True

@@ -4,24 +4,24 @@ suppressPackageStartupMessages(library(argparser))
 
 # arguments
 p <- arg_parser("ASV_mergable_dada2_with_taxa_chunk.R - use it after removing adapters and primers using cutadapt")
-p <- add_argument(p, "-d", help="directory containing the fastq files", default="SUBSAMPLES")
+p <- add_argument(p, "-d", help="directory containing the fastq files", default="Cutadapt_results")
 p <- add_argument(p, "-f", help="forward reads extention", default="_L001_R1_001.fastq.fq.gz")
 p <- add_argument(p, "-r", help="reverse reads extention", default="_L001_R2_001.fastq.fq.gz")
-p <- add_argument(p, "-l", help="trunlenleft", default=265) #265
-p <- add_argument(p, "-t", help="trunlenright", default=240) # 240
+p <- add_argument(p, "-l", help="trunlenleft", default=265) 
+p <- add_argument(p, "-t", help="trunlenright", default=240) 
 p <- add_argument(p, "-s", help="mergeSequenceTables -repeats ", default="sum")
 p <- add_argument(p, "-c", help="assingTaxonomy - tryRC", default=TRUE)
 p <- add_argument(p, "-m", help="allowMultiple", default=TRUE)
 p <- add_argument(p, "-g", help="path to taxonomy database(s)", default="DBs_reference_amplicon/gtdb_16s_db") #DBs_reference_amplicon/SILVA138_db,
 p <- add_argument(p, "-b", help="reference database(s)", default="gtdb") #silva,pr2
-p <- add_argument(p, "-O", help="Outdir", default="TEMPORAL")
+p <- add_argument(p, "-O", help="Outdir", default="Dada2_Results")
 
 argv <- parse_args(p)
 species_add_step=TRUE
 
 set.seed(123)
 dada2_ASV_table<-function(path_run){
-  #path_run="SUBSAMPLES"
+	
   FR_outfolder=paste(argv$O, paste("Run",basename(path_run), sep="_"), sep="/")
   fnFs <- sort(list.files(path=path_run, pattern=argv$f, full.names = TRUE))
   fnRs <- sort(list.files(path=path_run, pattern=argv$r, full.names = TRUE))
@@ -79,7 +79,6 @@ dada2_ASV_table<-function(path_run){
               col.names = TRUE, qmethod = c("escape", "double"),
               fileEncoding = "")
 
-
   return(seqtab.nochim)
 }
 
@@ -88,7 +87,8 @@ list_of_packages <- c("dada2")
 for (s in list_of_packages) { suppressPackageStartupMessages(library(s, character.only = TRUE))}
 
 dir.create(argv$O, showWarnings = FALSE)
-########################################
+
+
 if (!file.exists(paste(argv$O,"mergetab_R",sep="/"))) {
 
   runs_list=list.dirs(argv$d, recursive = FALSE)
@@ -145,14 +145,13 @@ saveRDS(mergetab, file=paste(argv$O,"mergetab_R",sep="/"))
             fileEncoding = "")
     }
 
-#########################
 
 #taxonomy
 DBs=strsplit(argv$b, ",")[[1]]
 Path_dbs=strsplit(argv$g, ",")[[1]]
 
 for (i in 1:length(DBs)) {
-  #i=1
+
   DB=DBs[i]
   cat("assignTaxonomy with database", DB, "\n")
   Path_db=Path_dbs[i]
@@ -240,6 +239,5 @@ taxa=readRDS(file=paste(argv$O,"tax_R",sep="/"))
               col.names = c("ASV", COLNAMES), qmethod = c("escape", "double"),
               fileEncoding = "")
 
-#  identical(ASV_df$Sequence, taxa$Sequence)
 
 }

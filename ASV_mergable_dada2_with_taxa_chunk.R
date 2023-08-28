@@ -12,7 +12,7 @@ p <- add_argument(p, "-t", help="trunlenright, according to FastQC quality figur
 p <- add_argument(p, "-s", help="mergeSequenceTables -repeats, when merging Illumina runs", default="sum")
 p <- add_argument(p, "-c", help="assingTaxonomy - dada2 parameter: tryRC", default=TRUE)
 p <- add_argument(p, "-m", help="allowMultiple - dada2 parameter", default=TRUE)
-p <- add_argument(p, "-g", help="path to taxonomy database(s)", default="DBs_reference_amplicon/gtdb_16s_db") #DBs_reference_amplicon/SILVA138_db,
+p <- add_argument(p, "-g", help="path to taxonomy database(s), containing compressed files , *.gz",default="DBs_reference_amplicon/gtdb_16s_db") #DBs_reference_amplicon/SILVA138_db,
 p <- add_argument(p, "-b", help="reference database(s), options: gtdb, silva, pr2. Pr2 version >= 5.0", default="gtdb")
 p <- add_argument(p, "-u", help="Chunck size when assingTaxonomy", default=4000)
 p <- add_argument(p, "-O", help="Outdir", default="Dada2_Results")

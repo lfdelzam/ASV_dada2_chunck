@@ -15,5 +15,5 @@ Primers and adapters must be removed before using this script (please use the sn
      Rscript ASV_mergable_dada2_with_taxa_chunk.R [options]
    use -h flag to know all the options 
 
-     python one_table.py [oprions]
+     python one_table.py [options]
    use -h flag to know all the options 

@@ -49,3 +49,10 @@ Finally, obtain the hits where both reads matches 100% identity and alingment, a
 Here is an example:
 
        python parse_blast_assign_Specie.py -i Custom_hits_16s -a ASV_split_file -o custom_vibrio_from_gtdb -g 16S_rRNA_from_BS_and_RefSeq_complete_genomes_db.fasta -b custom
+
+## Optional 
+
+if you want to combine dada2 taxonomy genus output with Blastn specie affiliation. 
+
+      python one_table.py [options] 
+   use -h flag to display all the options 

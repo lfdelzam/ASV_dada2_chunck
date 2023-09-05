@@ -41,4 +41,9 @@ Now, run blastn with 100% identity filter:
    
 Finally, obtain the hits where both reads matches 100% identity and alingment, and an unique specie
 
+      python parse_blast_assign_Specie.py [options]
+   use -h flag to know all the options.
+
+Here is an example:
+
        python parse_blast_assign_Specie.py -i Custom_hits_16s -a ASV_split_file -o custom_vibrio_from_gtdb -g 16S_rRNA_from_BS_and_RefSeq_complete_genomes_db.fasta -b custom

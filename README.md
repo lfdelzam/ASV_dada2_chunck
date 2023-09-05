@@ -28,7 +28,9 @@ Convert the dadas2 ASV_seqs.tsv output file into a fasta file with split fwd and
      python split_concatenated_reads.py [options]
    use -h flag to know all the options
    
-For example, python split_concatenated_reads.py -i vibrio_from_gtdb_asv_sequences.tsv -o ASV_split_file
+For example:
+
+      python split_concatenated_reads.py -i vibrio_from_gtdb_asv_sequences.tsv -o ASV_split_file
 
 Then create blastn database with the custom reference detabase 16S_rRNA_from_BS_and_RefSeq_complete_genomes_db.fasta 
 

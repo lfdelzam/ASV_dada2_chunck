@@ -32,7 +32,7 @@ Run the R script:
 
 Create blast environment:
 
-     conda create -n blast_env -c bioconda -c conda-forge blast=2.11.0 python=3.10.6 -y
+     conda create -n blast_env -c bioconda -c conda-forge blast=2.13.0 python=3.10.6 -y
      conda activate blast_env
 
 Convert the dadas2 ASV_seqs.tsv output file into a fasta file with split fwd and rev sequences:

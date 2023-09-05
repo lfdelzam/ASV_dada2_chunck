@@ -41,7 +41,7 @@ Now, run blastn with 100% identity filter:
 
        blastn -query ASV_split_file -db blast_db/custom.Ntdb -outfmt 7 -out Custom_hits_16s -num_threads 8 -evalue 0.01 -strand 'both' -task 'blastn' -word_size 11 -max_target_seqs 1000 -perc_identity 100
    
-Finally, obtain the hits where both reads matches 100% identity and alingment, and an unique specie
+Finally, obtain the hits with unique specie exact match of both fwd and rev reads:
 
       python parse_blast_assign_Specie.py [options]
    use -h flag to know all the options.

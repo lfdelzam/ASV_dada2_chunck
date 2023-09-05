@@ -18,7 +18,7 @@ using the following snakemake pipeline: https://github.com/biodiversitydata-se/a
      Rscript ASV_mergable_dada2_with_taxa_chunk.R [options]
    use -h flag to know all the options 
 
-# When Reads are not merged but concatenated, species affilitation with blastn
+## When Reads are not merged but concatenated, species affilitation with blastn
 
      conda create -n blast_env -c bioconda -c conda-forge blast python=3.10.6 -y
      conda activate blast_env

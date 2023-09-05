@@ -32,7 +32,7 @@ For example:
 
       python split_concatenated_reads.py -i vibrio_from_gtdb_asv_sequences.tsv -o ASV_split_file
 
-Then create blastn database with the custom reference detabase 16S_rRNA_from_BS_and_RefSeq_complete_genomes_db.fasta 
+Then create blastn database with your reference database. For instances, the custom reference detabase 16S_rRNA_from_BS_and_RefSeq_complete_genomes_db.fasta 
 
        mkdir -p blast_db
        makeblastdb -in 16S_rRNA_from_BS_and_RefSeq_complete_genomes_db.fasta -out blast_db/custom.Ntdb -dbtype nucl
@@ -52,7 +52,7 @@ Here is an example:
 
 ## Optional 
 
-if you want to combine dada2 taxonomy genus output with Blastn specie affiliation. 
+If you want to combine dada2 taxonomy genus output with Blastn specie affiliation. 
 
       python one_table.py [options] 
    use -h flag to display all the options 

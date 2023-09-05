@@ -30,7 +30,7 @@ Run the R script:
 
 ## When Reads, using dada2, are not merged but concatenated, assign species to the input sequences by exact matching against a reference fasta using blastn
 
-Create blast envirnment:
+Create blast environment:
 
      conda create -n blast_env -c bioconda -c conda-forge blast python=3.10.6 -y
      conda activate blast_env

@@ -4,21 +4,33 @@ Primers and adapters must be removed before using this script, by
 using the following snakemake pipeline: https://github.com/biodiversitydata-se/amplicon-multi-cutadapt
 
 # Installation 
-
+ Create conda environment:
+ 
     conda create -n dada2_env -c bioconda -c conda-forge r-base=4.1.3 bioconductor-dada2=1.22.0 python=3.11.0
    
     conda activate dada2_env
    
     conda install -c conda-forge r-argparser=0.7.1
 
+Clone repository:
+
+    git clone https://github.com/lfdelzam/ASV_dada2_chunck
+
 # Usage
 
+Go to ASV_dada2_chunck directory and activate conda environment:
+
+     cd ASV_dada2_chunck
      conda activate dada2_env
+
+Run the R script:
 
      Rscript ASV_mergable_dada2_with_taxa_chunk.R [options]
    use -h flag to know all the options 
 
-## When Reads are not merged but concatenated, assign species to the input sequences by exact matching against a reference fasta using blastn
+## When Reads, using dada2, are not merged but concatenated, assign species to the input sequences by exact matching against a reference fasta using blastn
+
+Create blast envirnment:
 
      conda create -n blast_env -c bioconda -c conda-forge blast python=3.10.6 -y
      conda activate blast_env

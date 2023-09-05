@@ -52,7 +52,7 @@ Here is an example:
 
 ## Optional 
 
-If you want to combine dada2 taxonomy (up to genus level) with Blastn specie affiliation, and/or if you want to create an ASV count-taxonomy table grouped by taxonomy affiliation.  
+If you want to combine dada2 taxonomy (up to genus level) with Blastn specie affiliation, and/or create an ASV count-taxonomy table grouped by taxonomy affiliation.  
 
       python one_table.py [options] 
    use -h flag to display all the options 

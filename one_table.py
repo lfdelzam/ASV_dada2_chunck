@@ -11,7 +11,7 @@ parser.add_argument('-t',dest='t',help='taxonomy table up to genus or species le
 parser.add_argument('-s',dest='s',help='species taxonomy file list')
 parser.add_argument('-c', dest='c', help='count table', required=True)
 parser.add_argument('-o', dest='o', help='prefix output file', required=True)
-parser.add_argument('-d', dest='d', help='database - silva,gtdb,pr2', required=True)
+parser.add_argument('-d', dest='d', help='database - silva,gtdb,pr2_v4, pr2_v5', required=True)
 parser.add_argument('-m', dest='m', help='metadata file',required=True)
 args = parser.parse_args()
 
@@ -105,8 +105,11 @@ def get_asv_taxonomy(file, db):
                 if db == "silva":
                     leves=["d","p","c","o","f","g","s"]
                     texto=[i+"_"+j for i,j in zip(leves,line[1:]) if j != "NA"]
-                if db == "pr2":
+                if db == "pr2_v5":
                     leves=["D","S","D","d","C","O","F","G","S"]
+                    texto=[i+"_"+j for i,j in zip(leves,line[1:]) if j != "NA"]
+                if db == "pr2_v4":
+                    leves=["k","S","D","c","o","f","g","s"]
                     texto=[i+"_"+j for i,j in zip(leves,line[1:]) if j != "NA"]
                 asv_tax[line[0]]=";".join(texto)
 

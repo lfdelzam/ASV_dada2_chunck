@@ -21,7 +21,7 @@ p <- add_argument(p, "-O", help="Outdir", default="Dada2_Results")
 argv <- parse_args(p)
 
 species_add_step=TRUE
-#set species_add_step to FALSE if reads will be concatenated (argv$z=TRUE)
+#set species_add_step to FALSE if concatenation of reads (argv$z=TRUE)
 if (argv$z) species_add_step=FALSE 
 
 set.seed(123)

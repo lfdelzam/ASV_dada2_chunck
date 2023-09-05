@@ -32,7 +32,7 @@ For example:
 
       python split_concatenated_reads.py -i vibrio_from_gtdb_asv_sequences.tsv -o ASV_split_file
 
-Then create blastn database with your reference database. For instances, the custom reference detabase 16S_rRNA_from_BS_and_RefSeq_complete_genomes_db.fasta 
+Create blastn database with your reference database, for instances, the custom reference detabase 16S_rRNA_from_BS_and_RefSeq_complete_genomes_db.fasta 
 
        mkdir -p blast_db
        makeblastdb -in 16S_rRNA_from_BS_and_RefSeq_complete_genomes_db.fasta -out blast_db/custom.Ntdb -dbtype nucl
@@ -41,7 +41,7 @@ Now, run blastn with 100% identity filter:
 
        blastn -query ASV_split_file -db blast_db/custom.Ntdb -outfmt 7 -out Custom_hits_16s -num_threads 8 -evalue 0.01 -strand 'both' -task 'blastn' -word_size 11 -max_target_seqs 1000 -perc_identity 100
    
-Finally, obtain the hits with unique specie exact match of both fwd and rev reads:
+Finally, obtain the hits with exact match of both fwd and rev reads to an unique specie:
 
       python parse_blast_assign_Specie.py [options]
    use -h flag to know all the options.
@@ -52,7 +52,7 @@ Here is an example:
 
 ## Optional 
 
-If you want to combine dada2 taxonomy genus output with Blastn specie affiliation. 
+If you want to combine dada2 taxonomy (up to genus level) with Blastn specie affiliation, and/or if you want to create an ASV count-taxonomy table grouped by taxonomy affiliation.  
 
       python one_table.py [options] 
    use -h flag to display all the options 

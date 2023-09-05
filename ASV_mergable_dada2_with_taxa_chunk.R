@@ -15,10 +15,14 @@ p <- add_argument(p, "-m", help="allowMultiple - dada2 parameter", default=TRUE)
 p <- add_argument(p, "-g", help="path to taxonomy database(s), containing compressed files , *.gz",default="DBs_reference_amplicon/gtdb_16s_db") #DBs_reference_amplicon/SILVA138_db,
 p <- add_argument(p, "-b", help="reference database(s), options: gtdb, silva, pr2. Pr2 version >= 5.0", default="gtdb")
 p <- add_argument(p, "-u", help="Chunck size when assingTaxonomy", default=4000)
+p <- add_argument(p, "-z", help="JustConcatenate -dada2 mergePairs, TRUE or FALSE. When using Novaseq, set it to TRUE", default=FALSE)
 p <- add_argument(p, "-O", help="Outdir", default="Dada2_Results")
 
 argv <- parse_args(p)
+
 species_add_step=TRUE
+#set species_add_step to FALSE if reads will be concatenated (argv$z=TRUE)
+if (argv$z) species_add_step=FALSE 
 
 set.seed(123)
 dada2_ASV_table<-function(path_run){
@@ -66,7 +70,7 @@ dada2_ASV_table<-function(path_run){
 
   dadaFs <- dada(filtFs, err=errF, multithread=TRUE)
   dadaRs <- dada(filtRs, err=errR, multithread=TRUE)
-  mergers <- mergePairs(dadaFs, filtFs, dadaRs, filtRs, verbose=TRUE)
+  mergers <- mergePairs(dadaFs, filtFs, dadaRs, filtRs, verbose=TRUE, justConcatenate=argv$z)
   seqtab <- makeSequenceTable(mergers)
   seqtab.nochim <- removeBimeraDenovo(seqtab, method="consensus", multithread=TRUE, verbose=TRUE)
 

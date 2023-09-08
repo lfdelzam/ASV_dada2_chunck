@@ -27,7 +27,7 @@ Run the R script:
      Rscript ASV_mergable_dada2_with_taxa_chunk.R [options]
    use -h flag to know all the options 
 
-## When Reads, using dada2, are not merged but concatenated, assign species to the input sequences by exact matching against a reference fasta using blastn
+## When Reads using dada2, are not merged but concatenated, assign species to the input sequences by exact matching against a reference fasta using blastn
 
 Create blast environment:
 

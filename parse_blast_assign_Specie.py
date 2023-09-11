@@ -153,8 +153,8 @@ asv_len=get_sequences(args.a)
 if args.b == "GTDB" or args.b == "silva":
     print("Using "+args.g)
     selected_hits=get_selected_hits_gtdb(args.i, asv_len)
-    species_names, long_species_names=names_from_gtdb(args.g)
-    get_both_matches_gtdb(selected_hits, args.o,species_names,long_species_names)
+    long_species_names=names_from_gtdb(args.g)
+    get_both_matches_gtdb(selected_hits, args.o,long_species_names)
 
 elif args.b == "custom":
     print("Using custom database")
